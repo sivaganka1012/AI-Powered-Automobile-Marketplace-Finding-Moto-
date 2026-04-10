@@ -1,173 +1,98 @@
-# Finding Moto
+# Finding Moto - Frontend
 
-A full-stack MERN (MongoDB, Express, React, Node.js) application.
-
-## Project Structure
-
-```
-Find_Moto/
-│
-├── frontend/               # React frontend application
-│   ├── public/
-│   ├── src/
-│   ├── .env
-│   ├── .gitignore
-│   ├── package.json
-│   ├── vite.config.js
-│   └── README.md
-│
-├── backend/                # Node.js + Express backend API
-│   ├── src/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── utils/
-│   ├── scripts/
-│   ├── uploads/
-│   ├── .env
-│   ├── .gitignore
-│   ├── package.json
-│   ├── src/app.ts
-│   ├── src/server.ts
-│   └── README.md
-│
-├── .gitignore
-├── package.json
-└── README.md
-```
+React frontend application for Finding Moto built with Vite.
 
 ## Features
 
-- Multi-role user authentication (buyer, seller, mechanic, admin)
-- Role-based registration with approval workflow
-- JWT-based authorization
-- Google OAuth login (buyer accounts)
-- MongoDB database integration
+- React 18
 - React Router for navigation
 - Context API for state management
-- RESTful API architecture
-- Admin dashboard for user management
-- Separate frontend and backend configurations
+- Axios for API calls
+- JWT authentication
+- Google OAuth login
+- Multi-role dashboard (buyer, seller, mechanic, admin)
+- Role-based route protection
+- Responsive design
 
 ## Prerequisites
 
 - Node.js (v16 or higher)
-- MongoDB (local or Atlas)
 - npm or yarn
 
-## Quick Start
+## Installation
 
-### 1. Clone the repository
 ```bash
-git clone <repository-url>
-cd Find_Moto
+npm install
 ```
 
-### 2. Install all dependencies
-```bash
-npm run install-all
-```
+## Environment Variables
 
-### 3. Configure environment variables
+Create a `.env` file in the frontend directory:
 
-**Backend (.env in backend/ folder):**
-```env
-NODE_ENV=development
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/finding-moto
-JWT_SECRET=your-secret-key
-JWT_EXPIRES_IN=7d
-CLIENT_URL=http://localhost:5173
-```
-
-**Frontend (.env in frontend/ folder):**
 ```env
 VITE_API_URL=http://localhost:5000/api
+VITE_GOOGLE_CLIENT_ID=your-google-client-id
 ```
 
-### 4. Run the application
+## Running the Application
 
-**Development mode (both frontend and backend):**
+### Development Mode
 ```bash
 npm run dev
 ```
 
-**Run backend only:**
-```bash
-npm run server
-```
-
-**Run frontend only:**
-```bash
-npm run client
-```
-
-**Production:**
+### Build for Production
 ```bash
 npm run build
-npm start
 ```
 
-## Access the Application
+### Preview Production Build
+```bash
+npm run preview
+```
 
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:5000/api
-- API Health Check: http://localhost:5000/api/health
+The application will run on `http://localhost:5173`
 
-## API Endpoints
+## Project Structure
 
-### Authentication (Public)
-- `POST /api/auth/register` - Register new user (buyer/seller/mechanic)
-- `POST /api/auth/login` - Login user
-- `POST /api/auth/google` - Google OAuth login (buyer only)
-- `GET /api/auth/approval-status/:email` - Check approval status
+```
+frontend/
+├── public/          # Static files
+├── src/
+│   ├── assets/      # Images, fonts, etc.
+│   ├── components/  # React components
+│   │   ├── common/  # Reusable components
+│   │   └── layout/  # Layout components
+│   ├── context/     # React Context
+│   ├── hooks/       # Custom hooks
+│   ├── pages/       # Page components
+│   ├── services/    # API services
+│   ├── styles/      # CSS files
+│   ├── App.tsx      # Main App component
+│   └── main.tsx     # Entry point
+├── .env
+├── package.json
+└── vite.config.ts
+```
 
-### Authentication (Protected)
-- `GET /api/auth/me` - Get current user profile
-- `PUT /api/auth/profile` - Update user profile
+## Available Pages
 
-### Admin Only
-- `GET /api/auth/admin/pending` - Get pending approval requests
-- `PUT /api/auth/admin/approve/:userId` - Approve/reject user
-- `GET /api/auth/admin/users` - Get all users
-- `PUT /api/auth/admin/toggle-active/:userId` - Toggle user active status
+- `/` - Home
+- `/login` - Login
+- `/register` - Multi-step registration
+- `/dashboard` - Role-specific dashboard (Protected)
+- `/products` - Products
+- `/services` - Services
+- `/about` - About
+- `/contact` - Contact
 
-## User Roles
+## Technologies
 
-- **Buyer** - Auto-approved on registration
-- **Seller** - Requires admin approval (provides shop details)
-- **Mechanic** - Requires admin approval (provides workshop details)
-- **Admin** - Full system access
-
-## Technologies Used
-
-### Frontend
 - React 18
 - Vite
 - React Router DOM
 - Axios
 - Context API
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT (jsonwebtoken)
-- bcryptjs
-- CORS
-
-## Development
-
-Each folder (frontend and backend) has its own:
-- `package.json` - Dependencies and scripts
-- `.env` - Environment variables
-- `.gitignore` - Ignore rules
-- `README.md` - Specific documentation
-
-Refer to the individual README files in each folder for more detailed information.
 
 ## License
 
